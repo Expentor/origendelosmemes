@@ -1,4 +1,4 @@
-body,div,ul,nav,h1,h2,h3,header,li,a {
+body,form,div,ul,nav,h1,h2,h3,header,li,a {
 	box-sizing:  border-box;
 	padding: 0;
 	margin: 0;
@@ -6,6 +6,8 @@ body,div,ul,nav,h1,h2,h3,header,li,a {
 
 body {
 	font-family: 'Lato', sans-serif;
+	overflow-x: hidden;
+	background: #94D2BD;
 }
 
 nav ul {
@@ -41,7 +43,6 @@ nav li {
 	color: #000;
 	font-size: 16px;
 	padding: 6px 12px;
-	margin-top: 10px;
 }
 
 .different-li {
@@ -70,7 +71,6 @@ nav li {
 }
 
 .blogem-banner__info {
-	margin: auto;
 	flex-grow: 1;
 	display: flex;
 }
@@ -106,16 +106,16 @@ nav li {
 }
 
 .flecha a:hover {
-	color: #000f;
+	color: #aaa;
 }
 
 .flecha a:active {
-	color: #000a;
+	color: #aaa;
 }
 
 #articulos {
-	height: 100vh;
 	text-align: center;
+	padding: 40px 0;
 }
 
 .articulos-texto {
@@ -175,4 +175,142 @@ nav li {
 
 #footer {
 	background: #fff;
+}
+
+#footer .redes-sociales {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	padding: 20px;
+}
+
+.red-social {
+	width: 130px;
+	margin: auto;
+	text-align: center;
+	font-size: 50px;
+	margin: 20px;
+}
+
+.red-social a {
+	color: #fff;
+}
+
+.red-social a .fa-facebook {
+	color: #04a;
+}
+
+.red-social a .fa-twitter {
+	color: #59f;
+}
+
+.newsletter {
+	background: #9B2226;
+	color: #fff;
+	text-align: center;
+	padding-bottom: 20px;
+	padding-top: 10px;
+}
+
+.newsletter h2 {
+	font-size: 14px;
+	padding: 10px;
+	padding-top: 20px;
+}
+
+.newsletter input {
+	border: 1px solid #fff;
+	color: #fff;
+	padding: 6px;
+	display: block;
+	width: 80%;
+	background: transparent;
+	margin: 12px auto;
+}
+
+.newsletter .sub-to-newsletter {
+	background: #fff;
+	color: #000;
+	width: auto;
+	text-align: center;
+}
+
+.derechos {
+	text-align: center;
+	font-size: 12px;
+	letter-spacing: 2px;
+	color: #666;
+}
+
+/*------------- RESPONSIVE TO WEB --------------*/ 	
+
+@media screen and (min-width: 1280px) {
+.icono-del-menu {
+	display: none;
+}
+
+
+#menu {
+	position: absolute;
+	margin-top: auto;
+	padding: 0;
+	transition: margin-top 0s;
+	padding: 10px;
+	box-shadow: none;
+	background: linear-gradient(to bottom, #000f, transparent);
+	text-align: center;
+	max-width: 100vw;
+	box-sizing: border-box;
+}
+
+#menu li {
+	display: inline-block;
+	margin: 20px;
+}
+
+.blogem-banner h1 {
+	font-size: 48px;
+}
+
+.blogem-banner h2 {
+	font-size: 38px;
+	font-weight: 400;
+}
+
+.blogem-banner img {
+	border-radius: 35%;
+	margin-top: 20px;
+
+}
+
+.blogem-banner .flecha {
+	margin: auto;
+	padding: 40px;
+	font-size: 80px;
+}
+
+.articulos-container a {
+	display: inline-block;
+	width: 320px;
+	height: 180px;
+	margin: 30px;
+}
+
+.articulos-container {
+	padding: 50px 0;
+}
+
+#footer input {
+	padding: 12px;
+	font-size: 20px;
+	display: inline-block;
+	width: 700px;
+	border-left: 4px solid #fff;
+}
+
+#footer .sub-to-newsletter {
+	width: auto;
+	margin-left: 10px;
+}
+
 }
