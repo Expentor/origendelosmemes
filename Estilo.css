@@ -1,0 +1,131 @@
+body .html
+{
+   height: 100%;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: antiquewhite;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-box
+{
+    width: 300px;
+    height: 400px;
+    padding: 150px;
+    background-color: none;
+    text-align: center;
+}
+
+.form-title
+{
+    color: black;
+    font-style: inherit;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.form-box input[type="text"],
+.form-box input[type="password"],
+.form-box button[type="submit"]
+{
+    border: 0;
+    backdrop-filter: none;
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid black;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.form-box input[type="text"]:focus,
+.form-box input[type="password"]:focus
+{
+    width: 280px;
+    border-color: whitesmoke;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.form-box button[type="submit"]
+{
+    border: 0;
+    background: black;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.form-box button[type="submit"]
+{
+    background: none;
+}
+
+.form-box2
+{
+    width: 300px;
+    height: 400px;
+    padding: 70px;
+    background-color: none;
+    text-align: center;
+}
+
+.form-title2
+{
+    color: black;
+    font-style: inherit;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.form-box2 input[type="text"],
+.form-box2 input[type="password"],
+.form-box2 button[type="submit"]
+{
+    border: 0;
+    backdrop-filter: none;
+    display: block;
+    margin: 20px auto;
+    padding: 14px 10px;
+    text-align: center;
+    border: 2px solid black;
+    width: 200px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.form-box2 input[type="text"]:focus,
+.form-box2 input[type="password"]:focus
+{
+    width: 280px;
+    border-color: whitesmoke;
+    background-color: black;
+    color: whitesmoke;
+}
+
+.form-box2 button[type="submit"]
+{
+    border: 0;
+    background: black;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.form-box2 button[type="submit"]
+{
+    background: none;
+}
