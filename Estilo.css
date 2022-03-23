@@ -7,7 +7,7 @@ body
 {
     margin: 0;
     padding: 0;
-    background-color: antiquewhite;
+    background-color: #E9D8A6;
 
     display: flex;
     flex-direction: row;
@@ -27,8 +27,8 @@ body
 
 .form-title
 {
-    color: black;
-    font-style: inherit;
+    color: #001219;
+    font-style:initial;
     text-transform: uppercase;
     font-weight: 500;
 }
@@ -46,8 +46,8 @@ body
     border: 2px solid black;
     width: 200px;
     outline: none;
-    color: black;
-    border-radius: 24px;
+    color: #001219;
+    border-radius: 10px;
     transition: 0.25s;
 }
 
@@ -55,17 +55,17 @@ body
 .form-box input[type="password"]:focus
 {
     width: 280px;
-    border-color: whitesmoke;
-    background-color: black;
-    color: whitesmoke;
+    border-color: #94D2BD;
+    background-color: #001219;
+    color: #94D2BD;
 }
 
 .form-box button[type="submit"]
 {
     border: 0;
-    background: black;
+    background: #001219;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #001219;
 }
 
 .form-box button[type="submit"]
@@ -84,7 +84,7 @@ body
 
 .form-title2
 {
-    color: black;
+    color: #001219;
     font-style: inherit;
     text-transform: uppercase;
     font-weight: 500;
@@ -103,8 +103,8 @@ body
     border: 2px solid black;
     width: 200px;
     outline: none;
-    color: black;
-    border-radius: 24px;
+    color: #001219;
+    border-radius: 10px;
     transition: 0.25s;
 }
 
@@ -112,17 +112,17 @@ body
 .form-box2 input[type="password"]:focus
 {
     width: 280px;
-    border-color: whitesmoke;
-    background-color: black;
-    color: whitesmoke;
+    border-color: #94D2BD;
+    background-color: #001219;
+    color: #94D2BD;
 }
 
 .form-box2 button[type="submit"]
 {
     border: 0;
-    background: black;
+    background: #001219;
     cursor: pointer;
-    border: 2px solid black;
+    border: 2px solid #001219;
 }
 
 .form-box2 button[type="submit"]
