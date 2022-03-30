@@ -12,4 +12,4 @@ CREATE TABLE users (
     age INT(3)
 );
 
-INSERT INTO users (username, email, password, age) VALUES ("Adair", "adair@adair.com" "hola123", "19");
+INSERT INTO users (username, email, password, age) VALUES ("Adair", "adair@adair.com", "hola123", "19");

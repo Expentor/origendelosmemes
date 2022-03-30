@@ -19,6 +19,6 @@
 				<li><a href="#">Página principal</a></li>
 				<li><a href="#">Contacto</a></li>
 				<li><a href="#">Política de privacidad</a></li>
-				<li class="different-li"><a href="login.html" class="button-link">Iniciar sesión</a></li>
+				<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
 			</ul>
 		</nav>
