@@ -17,9 +17,12 @@ CREATE TABLE users (
 
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    publish_date DATE,
     title VARCHAR(100),
     information TEXT
+    links
+    DATE
+    author
+    img
 );
 
 CREATE TABLE image (
