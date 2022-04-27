@@ -268,6 +268,12 @@ nav li {
 	margin: 20px;
 }
 
+.blogem-banner__info-container {
+	max-width: 50%;
+ 	max-height: 50%;
+	margin: auto;
+}
+
 .blogem-banner h1 {
 	font-size: 48px;
 }

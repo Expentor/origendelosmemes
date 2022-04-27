@@ -40,7 +40,6 @@
 				<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
 			</ul>
 			<?php if (isset($_SESSION["user"])): 
-				var_dump($_SESSION["user"]);
 				?>
           <div>
             <?= $_SESSION["user"]["email"] ?>

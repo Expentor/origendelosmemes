@@ -1,43 +1,41 @@
+<?php
 
-<!DOCTYPE html>
-<html>
+require "database.php";
+
+session_start();
+
+$contacts = $conn->query("SELECT * FROM contacts");
+
+?>
+
+<?php require "partials/header.php" ?>
+<div class="container pt-4 p-3">
+  <div class="row">
+
+  <?php if ($contacts->rowCount() == 0): ?>
+      <div class="col-md-4 mx-auto">
+        <div class="card card-body text-center">
+        <p>No contacts saved yet</p>
+        <a href="add.php">Add One!</a>
+      </div>
+    </div>
+  <?php endif?>
+  <?php foreach ($contacts as $contact) { ?>
+    <div class="col-md-4 mb-3">
+    <div class="card text-center">
+      <div class="card-body">
+        <h3 class="card-title text-capitalize"><?= $contact["name"] ?></h3>
+        <p class="m-2"><?= $contact["phone_number"] ?></p>
+        <a href="edit.php?id=<?= $contact["id"] ?>" class="btn btn-secondary mb-2">Edit Contact</a>
+        <a href="delete.php?id=<?= $contact["id"] ?>" class="btn btn-danger mb-2">Delete Contact</a>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
+
+
   
-<head>
-    <style>
-        article {
-            width: 300px;
-            border: 2px solid gray;
-            padding: 10px;
-            border-radius: 10px;
-            margin: 0 auto;
-        }
-  
-        h1 {
-            color: green;
-        }
-    </style>
-</head>
-  
-<body>
-    <article>
-        <img src=
-"https://media.geeksforgeeks.org/wp-content/cdn-uploads/20190710102234/download3.png"
-            alt="" width="300" height="250" 
-            class="alignnone size-medium wp-image-560930" />
-  
-        <h1>GeeksforGeeks</h1>
-  
-          
-<p>
-            GeeksforGeeks | A computer science
-            portal for geeks. A Computer Science
-            portal for geeks. It contains well
-            written, well thought and well
-            explained computer science and
-            programming articles, quizzes and ...
-        </p>
-  
-    </article>
-</body>
-  
-</html>
+  </div>
+</div>
+
+<?php require "partials/footer.php" ?>

@@ -3,10 +3,16 @@
 <div class="blogem-banner">
 	<div class="blogem-banner__info">
 		<div class="blogem-banner__info-container">
-			<img src="img/Blogem.PNG">
-			<h1>BLOGEM</h1>
+			<img src="img/ODM.PNG">
+			<h1>ORIGEN DE LOS MEMES</h1>
 			<h2>Un blog sobre <b>memes</b>...</h2>
 		</div>
+		<?php if (isset($_SESSION["user"])): 
+				?>
+          <div>
+            <?= $_SESSION["user"]["email"] ?>
+          </div>
+        <?php endif ?>
 	</div>
 	<div class="flecha">
 		<a href="#articulos"><i class="fas fa-chevron-down"></i></a>
