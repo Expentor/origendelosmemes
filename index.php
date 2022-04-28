@@ -22,7 +22,7 @@
 <section id="articulos">
 <h2 class="articulos-texto">ARTICULOS RECIENTES</h2>
 <div class="articulos-container">
-	<a href="https://youtu.be/OUntyFa1GSw" class="aloy">
+	<a href="https://youtu.be/OUntyFa1GSw" class="aloy"> 
 		<div class="articulo-data">
 			<h2>ALOY CON BARBA</h2>
 			<p>Lo ultimo en bromas</p>
