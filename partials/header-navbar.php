@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,15 +35,25 @@
 				<li><a href="#">Página principal</a></li>
 				<li><a href="#">Contacto</a></li>
 				<li><a href="#">Política de privacidad</a></li>
-				<?php if (isset($_SESSION["user"])): ?>
+				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Due to change -->
 					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
+					<?php else: ?>
+						<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
+						<li class="different-li"><a href="register.php" class="button-link">Registrarse</a></li>
 					<?php endif ?>
-				<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
-			</ul>
-			<?php if (isset($_SESSION["user"])): 
+					<?php if (isset($_SESSION["user"])): 
 				?>
           <div>
             <?= $_SESSION["user"]["email"] ?>
           </div>
         <?php endif ?>
-			</nav>
+
+		<?php if (isset($_SESSION["admin"])): 
+				?>
+          <div>
+            <?= $_SESSION["admin"]["email"] ?>
+          </div>
+        <?php endif ?>
+		
+			</ul>
+		</nav>

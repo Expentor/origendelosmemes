@@ -11,21 +11,21 @@
     } else if ($_POST["password"] != $_POST["confirm_password"]) {
       $error = "Las contraseñas no son iguales.";
     } else {
-      $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email");
+      $statement  = $conn->prepare("SELECT * FROM admins WHERE email = :email");
       $statement->bindParam(":email", $_POST["email"]);
       $statement->execute();
       if ($statement->rowCount() > 0) {
         $error = "Este email ya se está usando.";
       } else {
         $conn
-          ->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)")
+          ->prepare("INSERT INTO admins (username, email, password) VALUES (:username, :email, :password)")
           ->execute([
             ":username" => $_POST["username"],
             ":email" => $_POST["email"],
             ":password" => password_hash($_POST["password"], PASSWORD_BCRYPT)
           ]);
 
-          $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+          $statement  = $conn->prepare("SELECT * FROM admins WHERE email = :email LIMIT 1");
           $statement->bindParam(":email", $_POST["email"]);
           $statement->execute();
           $user = $statement->fetch(PDO::FETCH_ASSOC);
@@ -51,7 +51,7 @@
                   <p class="text-danger">
                     <?= $error ?>
                   <?php endif ?>
-                <form method="POST" action="register.php">
+                <form method="POST" action="register_admins.php">
                   <div class="mb-3 row">
                     <label for="username" class="col-md-4 col-form-label text-md-end">Username</label>
 

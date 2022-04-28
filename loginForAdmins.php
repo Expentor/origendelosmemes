@@ -9,23 +9,23 @@
     } else if (!str_contains($_POST["email"], "@")) {
       $error = "El formato del email es incorrecto.";
     } else {
-      $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email LIMIT 1");
+      $statement  = $conn->prepare("SELECT * FROM admins WHERE email = :email LIMIT 1");
       $statement->bindParam(":email", $_POST["email"]);
       $statement->execute();
 
       if ($statement->rowCount() == 0) {
         $error = "Credenciales incorrectas.";
       } else {
-        $user = $statement->fetch(PDO::FETCH_ASSOC);
+        $admin = $statement->fetch(PDO::FETCH_ASSOC);
 
-        if(!password_verify($_POST["password"], $user["password"])) {
+        if(!password_verify($_POST["password"], $admin["password"])) {
           $error = "Datos incorrectos, verifique nuevamente.";
         } else {
           session_start();
 
-          unset($user["password"]);
+          unset($admin["password"]);
 
-          $_SESSION["user"] = $user;
+          $_SESSION["admin"] = $admin;
 
           header("Location: index.php");
         }
@@ -34,17 +34,18 @@
   }
 ?>
 <?php require "partials/header.php" ?>
+  <div class="blogem-banner">
       <div class="container pt-5">
         <div class="row justify-content-center">
           <div class="col-md-8">
             <div class="card">
-              <div class="card-header">Iniciar Sesión</div>
+              <div class="card-header">Iniciar Sesión para ADMINS</div>
               <div class="card-body">
                 <?php if ($error): ?>
                   <p class="text-danger">
                     <?= $error ?>
                   <?php endif ?>
-                <form method="POST" action="login.php">
+                <form method="POST" action="loginForAdmins.php">
                   <div class="mb-3 row">
                     <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 
@@ -67,11 +68,11 @@
                     </div>
                   </div>
                 </form>
-                <a href="register.php">¿No tienes cuenta?</a>
               </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </main>
   </body>
