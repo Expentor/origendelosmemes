@@ -34,18 +34,18 @@
   }
 ?>
 <?php require "partials/header.php" ?>
-  <div class="blogem-banner">
       <div class="container pt-5">
         <div class="row justify-content-center">
           <div class="col-md-8">
+          <h2 class="mb-5"> <center>Inicio de sesión para admins</center></h2>
             <div class="card">
-              <div class="card-header">Iniciar Sesión para ADMINS</div>
+              <div class="card-header">Iniciar Sesión</div>
               <div class="card-body">
                 <?php if ($error): ?>
                   <p class="text-danger">
                     <?= $error ?>
                   <?php endif ?>
-                <form method="POST" action="loginForAdmins.php">
+                <form method="POST" action="loginAdmins.php">
                   <div class="mb-3 row">
                     <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
 

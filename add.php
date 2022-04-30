@@ -2,12 +2,12 @@
 <?php
   require "database.php";
 
-  session_start();
+session_start();
 
-  if (!isset($_SESSION["admin"])) {
-    header("Location: index.php");
-    return;
-  }
+if (!isset($_SESSION["admin"])) {
+  header("Location: index.php");
+  return;
+}
 
   $error = null;
 
@@ -18,11 +18,20 @@
       $title = $_POST["title"];
       $publish_date = $_POST["publish_date"];
       $information = $_POST["information"];
+      $author=$_POST['author'];
+      $picture=$_FILES['picture']['name'];
+      $path=$_FILES['picture']['tmp_name'];
+      $destiny = "fotos/".$picture;
+      copy($path, $destiny);
 
-      $statement = $conn->prepare("INSERT INTO articles (title, publish_date, information) VALUES (:title, :publish_date, :information)");
+      $statement = $conn->prepare("INSERT INTO articles (author, title, information, picture, publish_date, origin, links) VALUES (:author, :title, :information, :destiny, :publish_date, :origin, :links)");
+      $statement->bindParam(":author", $_POST["author"]);
       $statement->bindParam(":title", $_POST["title"]);
-      $statement->bindParam(":publish_date", $_POST["publish_date"]);
       $statement->bindParam(":information", $_POST["information"]);
+      $statement->bindParam(":destiny", $destiny);
+      $statement->bindParam(":publish_date", $_POST["publish_date"]);
+      $statement->bindParam(":origin", $_POST["origin"]);
+      $statement->bindParam(":links", $_POST["links"]);
       $statement->execute();
 
       header("Location: articles.php");
@@ -44,12 +53,36 @@
             <p class="text-danger">
               <?= $error ?>
             <?php endif ?>
-          <form method="POST" action="add.php">
+          <form method="POST" action="add.php" enctype="multipart/form-data">
             <div class="mb-3 row">
               <label for="title" class="col-md-4 col-form-label text-md-end">Título</label>
 
               <div class="col-md-6">
                 <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="picture" class="col-md-4 col-form-label text-md-end">Imagen</label>
+
+              <div class="col-md-6">
+                <input type="file" value="<?php echo $file['picture'] ?>" type="file" class="form-control" name="picture" placeholder="Imagen" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="author" class="col-md-4 col-form-label text-md-end">Autor</label>
+
+              <div class="col-md-6">
+                <input id="author" type="text" class="form-control" name="author" autocomplete="autor" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="origin" class="col-md-4 col-form-label text-md-end">Origen</label>
+
+              <div class="col-md-6">
+                <input id="origin" type="text" class="form-control" name="origin" autocomplete="origin" autofocus>
               </div>
             </div>
 
@@ -65,7 +98,15 @@
               <label for="information" class="col-md-4 col-form-label text-md-end">Información</label>
 
               <div class="col-md-6">
-                <input id="information" type="text" class="form-control" name="information" autocomplete="information" autofocus>
+                <textarea id="information" type="text" class="form-control" name="information" autocomplete="information" autofocus></textarea>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="links" class="col-md-4 col-form-label text-md-end">Links</label>
+
+              <div class="col-md-6">
+                <input id="links" type="text" class="form-control" name="links" autofocus>
               </div>
             </div>
 

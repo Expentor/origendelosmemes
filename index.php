@@ -3,6 +3,14 @@
 <div class="blogem-banner">
 	<div class="blogem-banner__info">
 		<div class="blogem-banner__info-container">
+		<div class="position-absolute right">
+		<?php if (isset($_SESSION["admin"])): 
+				?>
+          <div class="position-static" class="b">
+		  <a href="panelAdmins.php" class="btn btn-primary">Ir al panel de control</a>
+          </div>
+        <?php endif ?>
+		</div>
 			<img src="img/ODM.png">
 			<h1>ORIGEN DE LOS MEMES</h1>
 			<h2>Un blog sobre <b>memes</b>...</h2>

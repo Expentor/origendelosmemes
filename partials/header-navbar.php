@@ -32,10 +32,10 @@
 				<i class="fas fa-bars"></i>
 			</div>
 			<ul id="menu">
-				<li><a href="#">Página principal</a></li>
-				<li><a href="#">Contacto</a></li>
+				<li><a href="index.php">Página principal</a></li>
+				<li><a href="aboutUs.html">About Us</a></li>
 				<li><a href="#">Política de privacidad</a></li>
-				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Due to change -->
+				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Subject to change -->
 					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
 					<?php else: ?>
 						<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
@@ -47,13 +47,11 @@
             <?= $_SESSION["user"]["email"] ?>
           </div>
         <?php endif ?>
-
 		<?php if (isset($_SESSION["admin"])): 
 				?>
           <div>
-            <?= $_SESSION["admin"]["email"] ?>
+            <h5><?= $_SESSION["admin"]["email"] ?></h5>
           </div>
         <?php endif ?>
-		
 			</ul>
 		</nav>

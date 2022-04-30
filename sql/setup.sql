@@ -27,10 +27,13 @@ DROP TABLE IF EXISTS articles;
 
 CREATE TABLE articles (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    publish_date DATE,
     title VARCHAR(100),
+    publish_date DATE,
+    author VARCHAR(50),
+    picture VARCHAR(100),
+    origin VARCHAR(50),
     information TEXT,
-    links VARCHAR(100)
+    links VARCHAR(255)
 );
 
 CREATE TABLE image (
