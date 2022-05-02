@@ -22,4 +22,4 @@ if ($statement->rowCount() == 0) {
 
 $conn->prepare("DELETE FROM articles WHERE id = :id")->execute([":id" => $id]);
 
-header("Location: articles.php");
+header("Location: panelAdmins.php");

@@ -1,4 +1,5 @@
 <?php
+session_start();
 require "database.php";
 
   $id = $_GET["id"];
@@ -29,15 +30,15 @@ require "database.php";
 	<title>PI Work</title>
 </head>
 <body>
-
-<nav>
+	<header>
+		<nav>
 			<div class="icono-del-menu"> 
 				<i class="fas fa-bars"></i>
 			</div>
 			<ul id="menu">
-				<li><a href="index.php">Página principal</a></li>
-				<li><a href="aboutUs.html">About Us</a></li>
-				<li><a href="#">Política de privacidad</a></li>
+				<li><a href="index.php">  Página principal</a></li>
+				<li><a href="aboutUs.html">  About Us</a></li>
+				<li><a href="#">  Política de privacidad</a></li>
 				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Subject to change -->
 					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
 					<?php else: ?>
@@ -47,7 +48,7 @@ require "database.php";
 					<?php if (isset($_SESSION["user"])): 
 				?>
           <div>
-            <?= $_SESSION["user"]["email"] ?>
+            <h5><?= $_SESSION["user"]["username"] ?></h5>
           </div>
         <?php endif ?>
 		<?php if (isset($_SESSION["admin"])): 
@@ -63,12 +64,13 @@ require "database.php";
 		<div class="seccion" id="1">
 			<div class="card">
 				<h1 style="font-family:courier;"><?= $article["title"]?></h1>
-				<img src="memes/1.jpg" alt="">
-				<p style="font-family:courier;"><b>Meme: </b>Tilin con chaparritas peligrosas</p>
-                <p style="font-family:courier;"><b>Origen: </b>Tilin</p>
-                <p style="font-family:courier;"><b>Fecha de Publicacion: </b>28 abril de 2023</p>
-                <p>--------------------------------------------------------------------------------------------------------------------------------</p>
-
+				<img src="<?= $article["picture"]?>" alt="">
+        <p style="font-family:courier;"><b>Fecha de Publicacion: </b><?= $article["publish_date"]?></p>
+            <p style="font-family:courier;"><b>Autor: </b><?= $article["author"]?></p>
+                <p style="font-family:courier;"><b>Origen: </b><?= $article["origin"]?></p>
+                <p style="font-family:courier;"><b>Información: </b><?= $article["information"]?></p>
+                <p style="font-family:courier;"><b>Links: </b><?= $article["links"]?></p>
+                <p>-----------------------------------------------------------------------------------------------------------</p>
                 <button type="button" class="boton-reacciones">
                     <span class="texto-boton">Reaccionar</span>
                     <div class="reacciones">
@@ -107,5 +109,4 @@ require "database.php";
 
 	<script src="app.js"></script>
     
-</body>
-</html>
+  <?php require "partials/footer.php" ?>

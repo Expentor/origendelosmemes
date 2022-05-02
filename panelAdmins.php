@@ -49,6 +49,5 @@ $articles = $conn->query("SELECT * FROM articles");
   <?php } ?>
   </div>
 </div>
-
 </body>
 </html>

@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BLOGEM - Un blog sobre memes... :trollface:</title>
 	<link rel="stylesheet" type="text/css" href="styles.css">
+
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
@@ -32,9 +33,9 @@
 				<i class="fas fa-bars"></i>
 			</div>
 			<ul id="menu">
-				<li><a href="index.php">Página principal</a></li>
-				<li><a href="aboutUs.html">About Us</a></li>
-				<li><a href="#">Política de privacidad</a></li>
+				<li><i class="fas fa-home"></i><a href="index.php">  Página principal</a></li>
+				<li><i class="fas fa-user"></i><a href="aboutUs.html">  About Us</a></li>
+				<li><i class="fas fa-user-secret"></i><a href="#">  Política de privacidad</a></li>
 				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Subject to change -->
 					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
 					<?php else: ?>
@@ -44,7 +45,7 @@
 					<?php if (isset($_SESSION["user"])): 
 				?>
           <div>
-            <?= $_SESSION["user"]["email"] ?>
+            <h5><?= $_SESSION["user"]["username"] ?></h5>
           </div>
         <?php endif ?>
 		<?php if (isset($_SESSION["admin"])): 

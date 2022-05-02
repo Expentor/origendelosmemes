@@ -1,5 +1,13 @@
 <?php require "partials/header-navbar.php" ?>
 
+<?php
+
+require "database.php";
+
+$articles = $conn->query("SELECT * FROM articles");
+
+?>
+
 <div class="blogem-banner">
 	<div class="blogem-banner__info">
 		<div class="blogem-banner__info-container">
@@ -22,38 +30,16 @@
 </div>
 </header>
 <section id="articulos">
-<h2 class="articulos-texto">ARTICULOS RECIENTES</h2>
+<h2 class="articulos-texto">ARTÍCULOS RECIENTES</h2>
 <div class="articulos-container">
-	<a href="articles.php" class="aloy">
+<?php foreach ($articles as $articles) { ?>
+	<a href="articles.php?id=<?= $articles["id"]?>" style="background-image: url(<?= $articles["picture"] ?>);">
 		<div class="articulo-data">
-			<h2>JINX THE CAT</h2>
-			<p>Sensación de internet.</p>
+			<h2><?= $articles["title"] ?></h2>
+			<!-- <p><?= $articles["subtitle"] ?></p> -->
 		</div>
 	</a>
-	<a href="https://youtu.be/-9g5gStDVkE" class="tilin">
-		<div class="articulo-data">
-			<h2>Eso tilin</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
+<?php } ?>
 </div>
 </section>
 	

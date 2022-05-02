@@ -50,7 +50,7 @@
         ":links" => $_POST["links"],
       ]);
 
-      header("Location: articles.php");
+      header("Location: panelAdmins.php");
     }
   }
 ?>

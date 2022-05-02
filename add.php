@@ -1,4 +1,3 @@
-
 <?php
   require "database.php";
 
@@ -34,7 +33,7 @@ if (!isset($_SESSION["admin"])) {
       $statement->bindParam(":links", $_POST["links"]);
       $statement->execute();
 
-      header("Location: articles.php");
+      header("Location: panelAdmins.php");
     }
   }
   

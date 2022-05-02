@@ -126,21 +126,11 @@ nav li {
 .articulos-container a{
 	display: block;
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	width: 256px;
 	height: 144px;
 	margin: 20px auto;
-}
-
-.aloy {
-	background: url("img/aloy_con_barba.jpg");
-}
-
-.tilin {
-	background: url("img/eso_tilin.jpg");
-}
-
-.potatxio {
-	background: url("img/potatxio.jpg");
 }
 
 .articulo-data {
