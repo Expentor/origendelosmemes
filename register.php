@@ -11,11 +11,17 @@
     } else if ($_POST["password"] != $_POST["confirm_password"]) {
       $error = "Las contraseñas no son iguales.";
     } else {
+      $select  = $conn->prepare("SELECT * FROM users WHERE username = :username");
+      $select->bindParam(":username", $_POST["username"]);
+      $select->execute();
+
       $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email");
       $statement->bindParam(":email", $_POST["email"]);
       $statement->execute();
       if ($statement->rowCount() > 0) {
         $error = "Este email ya se está usando.";
+      } else if ($select->rowCount() > 0) {
+        $error = "Este usuario ya se está usando.";
       } else {
         $conn
           ->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)")

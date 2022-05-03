@@ -36,7 +36,6 @@
   }
 ?>
 <?php require "partials/header.php" ?>
-  <div class="blogem-banner">
       <div class="container pt-5">
         <div class="row justify-content-center">
           <div class="col-md-8">
@@ -92,7 +91,6 @@
             </div>
           </div>
         </div>
-      </div>
       </div>
     </main>
   </body>
