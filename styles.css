@@ -60,7 +60,6 @@ nav li {
 
 .blogem-banner {
 	display: flex;
-	height: 100vh;
 	text-align: center;
 	flex-direction: column;
 	background: url("img/bg.png");
@@ -126,21 +125,11 @@ nav li {
 .articulos-container a{
 	display: block;
 	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
 	width: 256px;
 	height: 144px;
 	margin: 20px auto;
-}
-
-.aloy {
-	background: url("img/aloy_con_barba.jpg");
-}
-
-.tilin {
-	background: url("img/eso_tilin.jpg");
-}
-
-.potatxio {
-	background: url("img/potatxio.jpg");
 }
 
 .articulo-data {
@@ -240,6 +229,14 @@ nav li {
 	font-size: 12px;
 	letter-spacing: 2px;
 	color: #666;
+}
+
+.b {
+	position: absolute;
+	left: auto;
+	width: 100px;
+	height: 120px;
+	border: 3px solid blue;
 }
 
 /*------------- RESPONSIVE TO WEB --------------*/ 	
