@@ -23,9 +23,10 @@ if (!isset($_SESSION["admin"])) {
       $destiny = "fotos/".$picture;
       copy($path, $destiny);
 
-      $statement = $conn->prepare("INSERT INTO articles (author, title, information, picture, publish_date, origin, links) VALUES (:author, :title, :information, :destiny, :publish_date, :origin, :links)");
+      $statement = $conn->prepare("INSERT INTO articles (author, title, subtitle, information, picture, publish_date, origin, links) VALUES (:author, :title, :subtitle, :information, :destiny, :publish_date, :origin, :links)");
       $statement->bindParam(":author", $_POST["author"]);
       $statement->bindParam(":title", $_POST["title"]);
+      $statement->bindParam(":subtitle", $_POST["subtitle"]);
       $statement->bindParam(":information", $_POST["information"]);
       $statement->bindParam(":destiny", $destiny);
       $statement->bindParam(":publish_date", $_POST["publish_date"]);
@@ -58,6 +59,14 @@ if (!isset($_SESSION["admin"])) {
 
               <div class="col-md-6">
                 <input id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="subtitle" class="col-md-4 col-form-label text-md-end">Subtitulo</label>
+
+              <div class="col-md-6">
+                <input id="subtitle" type="text" class="form-control" name="subtitle" autocomplete="subtitle" autofocus>
               </div>
             </div>
 

@@ -35,6 +35,7 @@ $articles = $conn->query("SELECT * FROM articles");
         <h3 class="card-title text-capitalize"><?= $articles["title"] ?></h3>
         <div><?= '<img width="200px" src="'.$articles["picture"].'">' ?></div>
         <div>
+        <p class="m-2"><?= $articles["subtitle"] ?></p>
         <p class="m-2"><?= $articles["author"] ?></p>
         <p class="m-2"><?= $articles["publish_date"] ?></p>
         <p class="m-2"><?= $articles["origin"] ?></p>

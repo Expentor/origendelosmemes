@@ -29,6 +29,7 @@
       $error = "Porfavor rellene todos los espacios.";
     } else {
       $title = $_POST["title"];
+      $subtitle = $_POST["subtitle"];
       $publish_date = $_POST["publish_date"];
       $information = $_POST["information"];
       $author = $_POST["author"];
@@ -37,11 +38,12 @@
       $origin = $_POST["origin"];
       $links = $_POST["links"];
 
-      $statement = $conn->prepare("UPDATE articles SET title = :title, publish_date = :publish_date, information = :information,
+      $statement = $conn->prepare("UPDATE articles SET title = :title, subtitle = :subtitle, publish_date = :publish_date, information = :information,
       author = :author, picture = :destiny, origin = :origin, links = :links WHERE id = :id");
       $statement->execute([
         ":id" => $id,
         ":title" => $_POST["title"],
+        ":subtitle" => $_POST["subtitle"],
         ":publish_date" => $_POST["publish_date"],
         ":information" => $_POST["information"],
         ":author" => $_POST["author"],
@@ -74,6 +76,14 @@
 
               <div class="col-md-6">
                 <input value="<?= $article["title"]?>" id="title" type="text" class="form-control" name="title" autocomplete="title" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="subtitle" class="col-md-4 col-form-label text-md-end">Subtitulo</label>
+
+              <div class="col-md-6">
+                <input value="<?= $article["subtitle"]?>" id="subtitle" type="text" class="form-control" name="subtitle" autocomplete="subtitle" autofocus>
               </div>
             </div>
 

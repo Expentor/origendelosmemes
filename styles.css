@@ -60,7 +60,6 @@ nav li {
 
 .blogem-banner {
 	display: flex;
-	height: 100vh;
 	text-align: center;
 	flex-direction: column;
 	background: url("img/bg.png");
