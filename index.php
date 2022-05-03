@@ -1,18 +1,28 @@
 <?php require "partials/header-navbar.php" ?>
 
+<?php
+
+require "database.php";
+
+$articles = $conn->query("SELECT * FROM articles");
+
+?>
+
 <div class="blogem-banner">
-	<div class="blogem-banner__info">
+	<div class="container pt-5 mt-3">
+			<?php if (isset($_SESSION["admin"])): 
+					?>
+			<div class="container pt-5"class="b">
+				<a href="panelAdmins.php" class="btn btn-primary">Ir al panel de control</a>
+			</div>
+			<?php endif ?>
+			</div>
+	<div class="blogem-banner__info">}
 		<div class="blogem-banner__info-container">
-			<img src="img/ODM.PNG">
+			<img src="img/ODM.png">
 			<h1>ORIGEN DE LOS MEMES</h1>
 			<h2>Un blog sobre <b>memes</b>...</h2>
 		</div>
-		<?php if (isset($_SESSION["user"])): 
-				?>
-          <div>
-            <?= $_SESSION["user"]["email"] ?>
-          </div>
-        <?php endif ?>
 	</div>
 	<div class="flecha">
 		<a href="#articulos"><i class="fas fa-chevron-down"></i></a>
@@ -20,38 +30,16 @@
 </div>
 </header>
 <section id="articulos">
-<h2 class="articulos-texto">ARTICULOS RECIENTES</h2>
+<h2 class="articulos-texto">ARTÍCULOS RECIENTES</h2>
 <div class="articulos-container">
-	<a href="https://youtu.be/OUntyFa1GSw" class="aloy"> 
+<?php foreach ($articles as $articles) { ?>
+	<a href="articles.php?id=<?= $articles["id"]?>" style="background-image: url(<?= $articles["picture"] ?>);">
 		<div class="articulo-data">
-			<h2>ALOY CON BARBA</h2>
-			<p>Lo ultimo en bromas</p>
+			<h2><?= $articles["title"] ?></h2>
+			<?= $articles["subtitle"] ?>
 		</div>
 	</a>
-	<a href="https://youtu.be/-9g5gStDVkE" class="tilin">
-		<div class="articulo-data">
-			<h2>Eso tilin</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
-	<a href="https://youtu.be/6hVpNK8Oe7g" class="potatxio">
-		<div class="articulo-data">
-			<h2>Potatxio</h2>
-			<p>Lo ultimo en bromas</p>
-		</div>
-	</a>
+<?php } ?>
 </div>
 </section>
 	
