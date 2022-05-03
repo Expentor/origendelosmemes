@@ -4,10 +4,12 @@
   $error = null;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if (empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"])) {
+    if (empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["confirm_password"])){
       $error = "Porfavor rellene todos los espacios.";
     } else if (!str_contains($_POST["email"], "@")) {
       $error = "El formato de email es incorrecto.";
+    } else if ($_POST["password"] != $_POST["confirm_password"]) {
+      $error = "Las contraseñas no son iguales.";
     } else {
       $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email");
       $statement->bindParam(":email", $_POST["email"]);
@@ -71,6 +73,14 @@
 
                     <div class="col-md-6">
                       <input id="password" type="password" class="form-control" name="password" autocomplete="password" autofocus>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label for="confirm_password" class="col-md-4 col-form-label text-md-end">Confirmar Contraseña</label>
+
+                  <div class="col-md-6">
+                      <input id="confirm_password" type="password" class="form-control" name="confirm_password" autofocus>
                     </div>
                   </div>
 
