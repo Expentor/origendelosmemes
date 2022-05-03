@@ -3,7 +3,7 @@
 $host = "localhost";
 $database = "userOrigenDeLosMemes";
 $user = "root";
-$password = "Maullino1011";
+$password = "";
 
 try {
   $conn = new PDO("mysql:host=$host;dbname=$database", $user, $password);
