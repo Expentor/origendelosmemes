@@ -1,0 +1,60 @@
+div, body, h2, h3, p {
+	padding: 0;
+	margin: 0;
+}
+
+.overlay .bg {
+	background-image: url("https://pbs.twimg.com/profile_images/1450174070729834499/ZCf_olrA_400x400.jpg");
+	height: 100vh;
+	width: 100vw;
+	background-size: cover;
+}
+
+.overlay .img-description {
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	background: linear-gradient(to right, #000, #0000);
+	color: #fff;
+	font-family: 'Raleway', sans-serif;
+	display: flex;
+}
+
+.overlay .img-description-container {
+	margin: auto;
+	flex-wrap: wrap;
+	margin-left: 60px;
+	animation: aparecer 1s forwards;
+}
+
+.overlay .img-description h2 {
+	font-size: 100px;
+}
+
+.overlay .img-description p {
+	font-family: 'Raleway', sans-serif;
+	font-size: 32px;
+	width: 90%;
+	max-width: 1000px;
+}
+
+.overlay-text {
+	width: 60%;
+}
+
+.overlay-text img {
+	margin-top: 50px;
+	max-width: 50%;
+	height: auto;
+}
+
+@keyframes aparecer {
+	0% {
+		margin-left: -100px;
+		opacity:  0;
+	}
+	100% {
+		margin-left: 60px;
+		opacity:  1;
+	}
+}
