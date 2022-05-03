@@ -34,6 +34,7 @@
   }
 ?>
 <?php require "partials/header.php" ?>
+  <div class="blogem-banner">
       <div class="container pt-5">
         <div class="row justify-content-center">
           <div class="col-md-8">
@@ -67,11 +68,15 @@
                     </div>
                   </div>
                 </form>
-                <a href="register.php">¿No tienes cuenta?</a>
+                  <a href="register.php">¿No tienes cuenta?</a>
+                <div class="mt-2">
+                  <a href="change_password.php">Cambiar Contraseña</a>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
       </div>
     </main>
   </body>
