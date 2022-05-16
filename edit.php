@@ -34,7 +34,14 @@
       $information = $_POST["information"];
       $author = $_POST["author"];
       $picture=$_POST['picture'];
+      
+      $fecha = new DateTime();
+
+      $picture=$_FILES['picture'].$fecha->getTimestamp()['name'];
+      $path=$_FILES['picture']['tmp_name'];
+
       $destiny = "fotos/".$picture;
+      move_uploaded_file($path, $destiny);
       $origin = $_POST["origin"];
       $links = $_POST["links"];
 
@@ -52,7 +59,10 @@
         ":links" => $_POST["links"],
       ]);
 
+      $_SESSION["flash"] = ["message" => "Artículo {$_POST['title']} actualizado."];
+
       header("Location: panelAdmins.php");
+      return;
     }
   }
 ?>
@@ -70,7 +80,7 @@
             <p class="text-danger">
               <?= $error ?>
             <?php endif ?>
-          <form method="POST" action="edit.php?id=<?= $article["id"] ?>">
+          <form method="POST" enctype="multipart/form-data" action="edit.php?id=<?= $article["id"] ?>">
             <div class="mb-3 row">
               <label for="title" class="col-md-4 col-form-label text-md-end">Título</label>
 
@@ -91,7 +101,7 @@
               <label for="picture" class="col-md-4 col-form-label text-md-end">Imagen</label>
 
               <div class="col-md-6">
-                <input type="file" value="<?php echo $file['picture'] ?>" type="file" class="form-control" name="picture" placeholder="Imagen" autofocus>
+                <input type="file" class="form-control" name="picture" placeholder="Imagen" autofocus>
               </div>
             </div>
 
@@ -108,6 +118,14 @@
 
               <div class="col-md-6">
                 <input value="<?= $article["origin"]?>" id="origin" type="text" class="form-control" name="origin" autocomplete="origin" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="category" class="col-md-4 col-form-label text-md-end">Categoría</label>
+
+              <div class="col-md-6">
+                <input value="<?= $article["category"]?>" id="category" type="text" class="form-control" name="category" autocomplete="category" autofocus>
               </div>
             </div>
 

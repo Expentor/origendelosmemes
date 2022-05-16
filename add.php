@@ -1,12 +1,13 @@
 <?php
+
   require "database.php";
 
-session_start();
+  session_start();
 
-if (!isset($_SESSION["admin"])) {
-  header("Location: index.php");
-  return;
-}
+  if (!isset($_SESSION["admin"])) {
+    header("Location: index.php");
+    return;
+  }
 
   $error = null;
 
@@ -15,15 +16,29 @@ if (!isset($_SESSION["admin"])) {
       $error = "Porfavor rellene todos los espacios.";
     } else {
       $title = $_POST["title"];
+      $subtitle = $_POST["subtitle"];
       $publish_date = $_POST["publish_date"];
-      $information = $_POST["information"];
       $author=$_POST['author'];
-      $picture=$_FILES['picture']['name'];
-      $path=$_FILES['picture']['tmp_name'];
-      $destiny = "fotos/".$picture;
-      copy($path, $destiny);
 
-      $statement = $conn->prepare("INSERT INTO articles (author, title, subtitle, information, picture, publish_date, origin, links) VALUES (:author, :title, :subtitle, :information, :destiny, :publish_date, :origin, :links)");
+      $picture=$_POST['picture'];
+      
+      $fecha = new DateTime();
+
+      $picture=$_FILES['picture'].$fecha->getTimestamp()['name'];
+      $path=$_FILES['picture']['tmp_name'];
+
+      $destiny = "fotos/".$picture;
+      move_uploaded_file($path, $destiny);
+
+      $origin = $_POST["origin"];
+      $category = $_POST["category"];
+      $links = $_POST["links"];
+      $information = $_POST["information"];
+
+
+      $statement = $conn->prepare("INSERT INTO articles (author, title, subtitle, information, picture, 
+      publish_date, origin, category, links) VALUES (:author, :title, :subtitle, :information, :destiny, 
+      :publish_date, :origin, :category, :links)");
       $statement->bindParam(":author", $_POST["author"]);
       $statement->bindParam(":title", $_POST["title"]);
       $statement->bindParam(":subtitle", $_POST["subtitle"]);
@@ -31,10 +46,14 @@ if (!isset($_SESSION["admin"])) {
       $statement->bindParam(":destiny", $destiny);
       $statement->bindParam(":publish_date", $_POST["publish_date"]);
       $statement->bindParam(":origin", $_POST["origin"]);
+      $statement->bindParam(":category", $_POST["category"]);
       $statement->bindParam(":links", $_POST["links"]);
       $statement->execute();
 
+      $_SESSION["flash"] = ["message" => "Artículo {$_POST['title']} añadido."];
+
       header("Location: panelAdmins.php");
+      return;
     }
   }
   
@@ -91,6 +110,14 @@ if (!isset($_SESSION["admin"])) {
 
               <div class="col-md-6">
                 <input id="origin" type="text" class="form-control" name="origin" autocomplete="origin" autofocus>
+              </div>
+            </div>
+
+            <div class="mb-3 row">
+              <label for="category" class="col-md-4 col-form-label text-md-end">Categoría</label>
+
+              <div class="col-md-6">
+                <input id="category" type="text" class="form-control" name="category" autocomplete="category" autofocus>
               </div>
             </div>
 

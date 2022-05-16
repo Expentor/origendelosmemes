@@ -31,6 +31,7 @@ CREATE TABLE articles (
     author VARCHAR(50),
     picture VARCHAR(100),
     origin VARCHAR(50),
+    category VARCHAR(50),
     information TEXT,
     likes INT,
     dislikes INT,

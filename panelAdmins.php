@@ -38,10 +38,8 @@ $articles = $conn->query("SELECT * FROM articles");
         <p class="m-2"><?= $articles["subtitle"] ?></p>
         <p class="m-2"><?= $articles["author"] ?></p>
         <p class="m-2"><?= $articles["publish_date"] ?></p>
-        <p class="m-2"><?= $articles["origin"] ?></p>
         </div>
-        <p class="m-2"><?= substr($articles["information"],0,300) ?>...</p>
-        <p class="m-2"><?= $articles["links"] ?></p>
+        <p class="m-2"><?= substr($articles["information"],0,50) ?></p>
         <a href="edit.php?id=<?= $articles["id"] ?>" class="btn btn-secondary mb-2">Editar Artículo</a>
         <a href="delete.php?id=<?= $articles["id"] ?>" class="btn btn-danger mb-2">Borrar Artículo</a>
       </div>
