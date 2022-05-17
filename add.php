@@ -20,40 +20,43 @@
       $publish_date = $_POST["publish_date"];
       $author=$_POST['author'];
 
-      $picture=$_POST['picture'];
-      
-      $fecha = new DateTime();
+      $picture=$_FILES['picture']["type"];
 
-      $picture=$_FILES['picture'].$fecha->getTimestamp()['name'];
-      $path=$_FILES['picture']['tmp_name'];
+      if($picture == "image/png" || $picture == "image/jpeg" || $picture == "image/gif"){
+        $fecha = new DateTime();
+        $picture=$_FILES['picture'].$fecha->getTimestamp()['name'];
+        $path=$_FILES['picture']['tmp_name'];
 
-      $destiny = "fotos/".$picture;
-      move_uploaded_file($path, $destiny);
+        $destiny = "fotos/".$picture;
+        move_uploaded_file($path, $destiny);
 
-      $origin = $_POST["origin"];
-      $category = $_POST["category"];
-      $links = $_POST["links"];
-      $information = $_POST["information"];
+        $origin = $_POST["origin"];
+        $category = $_POST["category"];
+        $links = $_POST["links"];
+        $information = $_POST["information"];
 
 
-      $statement = $conn->prepare("INSERT INTO articles (author, title, subtitle, information, picture, 
-      publish_date, origin, category, links) VALUES (:author, :title, :subtitle, :information, :destiny, 
-      :publish_date, :origin, :category, :links)");
-      $statement->bindParam(":author", $_POST["author"]);
-      $statement->bindParam(":title", $_POST["title"]);
-      $statement->bindParam(":subtitle", $_POST["subtitle"]);
-      $statement->bindParam(":information", $_POST["information"]);
-      $statement->bindParam(":destiny", $destiny);
-      $statement->bindParam(":publish_date", $_POST["publish_date"]);
-      $statement->bindParam(":origin", $_POST["origin"]);
-      $statement->bindParam(":category", $_POST["category"]);
-      $statement->bindParam(":links", $_POST["links"]);
-      $statement->execute();
+        $statement = $conn->prepare("INSERT INTO articles (author, title, subtitle, information, picture, 
+        publish_date, origin, category, links) VALUES (:author, :title, :subtitle, :information, :destiny, 
+        :publish_date, :origin, :category, :links)");
+        $statement->bindParam(":author", $_POST["author"]);
+        $statement->bindParam(":title", $_POST["title"]);
+        $statement->bindParam(":subtitle", $_POST["subtitle"]);
+        $statement->bindParam(":information", $_POST["information"]);
+        $statement->bindParam(":destiny", $destiny);
+        $statement->bindParam(":publish_date", $_POST["publish_date"]);
+        $statement->bindParam(":origin", $_POST["origin"]);
+        $statement->bindParam(":category", $_POST["category"]);
+        $statement->bindParam(":links", $_POST["links"]);
+        $statement->execute();
 
-      $_SESSION["flash"] = ["message" => "Artículo {$_POST['title']} añadido."];
+        $_SESSION["flash"] = ["message" => "Artículo {$_POST['title']} añadido."];
 
-      header("Location: panelAdmins.php");
-      return;
+        header("Location: panelAdmins.php");
+        return;
+      }else{
+        $error = "Sólo se aceptan archivos png, jpg y gif";
+      }
     }
   }
   

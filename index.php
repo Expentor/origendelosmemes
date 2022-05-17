@@ -4,20 +4,19 @@
 
 require "database.php";
 
-$articles = $conn->query("SELECT * FROM articles");
+$articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
 
 ?>
 
 <div class="blogem-banner">
 	<div class="container pt-5 mt-3">
-			<?php if (isset($_SESSION["admin"])): 
-					?>
+			<?php if (isset($_SESSION["admin"])):?>
 			<div class="container pt-5"class="b">
 				<a href="panelAdmins.php" class="btn btn-primary">Ir al panel de control</a>
 			</div>
-			<?php endif ?>
+				<?php endif ?>
 			</div>
-	<div class="blogem-banner__info">}
+	<div class="blogem-banner__info">
 		<div class="blogem-banner__info-container">
 			<img src="img/ODM.png">
 			<h1>ORIGEN DE LOS MEMES</h1>

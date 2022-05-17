@@ -40,13 +40,34 @@ $articles = $conn->query("SELECT * FROM articles");
         <p class="m-2"><?= $articles["publish_date"] ?></p>
         </div>
         <p class="m-2"><?= substr($articles["information"],0,50) ?></p>
-        <a href="edit.php?id=<?= $articles["id"] ?>" class="btn btn-secondary mb-2">Editar Artículo</a>
-        <a href="delete.php?id=<?= $articles["id"] ?>" class="btn btn-danger mb-2">Borrar Artículo</a>
+        <a href="edit.php?id=<?= $articles["id"] ?>" class="btn btn-success mb-2">Editar Artículo</a>
+        <a href="articles.php?id=<?= $articles["id"] ?>" class="btn btn-info mb-2 mx-1"><i class="fas fa-eye"></i></a>
+        <div class="container text-center">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Borrar Articulo</button>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                      <div class="modal-body">
+                          <h5>¿Está seguro que desea eliminar este artículo?</h5>
+                      </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <a href="delete.php?id=<?= $articles["id"] ?>" class="btn btn-primary">Borrar Artículo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
       </div>
     </div>
   </div>
-  <?php } ?>
+    <?php } ?>
   </div>
 </div>
+<script src="https://kit.fontawesome.com/62ea397d3a.js"></script>
 </body>
 </html>
