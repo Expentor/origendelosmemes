@@ -4,6 +4,7 @@
   $error = null;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $picture=$_FILES['picture']["type"];
     if (empty($_POST["username"]) || empty($_POST["email"]) || empty($_POST["password"]) || empty($_POST["confirm_password"])){
       $error = "Porfavor rellene todos los espacios.";
     } else if (!str_contains($_POST["email"], "@")) {
@@ -18,16 +19,25 @@
       $statement  = $conn->prepare("SELECT * FROM users WHERE email = :email");
       $statement->bindParam(":email", $_POST["email"]);
       $statement->execute();
-      if ($statement->rowCount() > 0) {
+    if ($statement->rowCount() > 0) {
         $error = "Este email ya se está usando.";
       } else if ($select->rowCount() > 0) {
         $error = "Este usuario ya se está usando.";
       } else {
+          if ($picture == "image/png" || $picture == "image/jpeg" || $picture == "image/gif") {
+          $fecha = new DateTime();
+          $picture= $_FILES['picture']['name'].$fecha->getTimestamp();
+          $path=$_FILES['picture']['tmp_name'];
+  
+          $destiny = "fotos/".$picture;
+          move_uploaded_file($path, $destiny);
+
         $conn
-          ->prepare("INSERT INTO users (username, email, password) VALUES (:username, :email, :password)")
+          ->prepare("INSERT INTO users (username, email, password, picture) VALUES (:username, :email, :password, :destiny)")
           ->execute([
             ":username" => $_POST["username"],
             ":email" => $_POST["email"],
+            ":destiny" => $destiny,
             ":password" => password_hash($_POST["password"], PASSWORD_BCRYPT)
           ]);
 
@@ -40,6 +50,9 @@
           $_SESSION["user"] = $user;
 
           header("Location: index.php");
+      }else {
+        $error = "Sólo se aceptan archivos png, jpg y gif";
+        }
       }
     }
   }
@@ -57,12 +70,20 @@
                   <p class="text-danger">
                     <?= $error ?>
                   <?php endif ?>
-                <form method="POST" action="register.php">
+                <form method="POST" action="register.php" enctype="multipart/form-data">
                   <div class="mb-3 row">
                     <label for="username" class="col-md-4 col-form-label text-md-end">Username</label>
 
                     <div class="col-md-6">
                       <input id="username" type="text" class="form-control" name="username" autocomplete="username" autofocus>
+                    </div>
+                  </div>
+
+                  <div class="mb-3 row">
+                    <label for="picture" class="col-md-4 col-form-label text-md-end">Foto de perfil</label>
+
+                    <div class="col-md-6">
+                      <input type="file" value="<?php echo $file['picture'] ?>" type="file" class="form-control" name="picture" placeholder="Imagen" autofocus>
                     </div>
                   </div>
 

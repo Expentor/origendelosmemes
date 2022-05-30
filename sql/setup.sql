@@ -6,18 +6,24 @@ CREATE DATABASE userOrigenDeLosMemes;
 
 USE userOrigenDeLosMemes;
 
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255),
     email VARCHAR(255),
-    password VARCHAR(255)
+    password VARCHAR(255),
+    picture VARCHAR(255)
 );
+
+DROP TABLE IF EXISTS admins;
 
 CREATE TABLE admins (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255),
     email VARCHAR(255),
     password VARCHAR(255),
+    picture VARCHAR(255),
     isAdmin Boolean
 );
 
@@ -29,21 +35,31 @@ CREATE TABLE articles (
     subtitle VARCHAR(50),
     publish_date DATE,
     author VARCHAR(50),
-    picture VARCHAR(100),
+    picture VARCHAR(255),
     origin VARCHAR(50),
     category VARCHAR(50),
     information TEXT,
-    likes INT,
-    dislikes INT,
     links VARCHAR(255),
     isPublished BOOLEAN
 );
 
-CREATE TABLE comments (
+CREATE TABLE likes (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    comments VARCHAR(255),
-    reply VARCHAR(255)
+    id_articles INT FOREIGN KEY,
+    likes INT,
+    dislikes INT
 );
+
+CREATE TABLE comments (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    author VARCHAR(255) DEFAULT NULL,
+    profile_picture VARCHAR(255),
+    comments VARCHAR(255) DEFAULT NULL,
+    datecom datetime NOT NULL DEFAULT current_timestamp(),
+    post_id INT NOT NULL
+);
+
+DROP TABLE IF EXISTS comments;
 
 INSERT INTO users (username, email, password) VALUES ("Adair", "adair@adair.com", "hola123");
 INSERT INTO admins (username, email, password, isAdmin) VALUES ("Adair", "adair@gmail.com", "vbnfgh213", True);

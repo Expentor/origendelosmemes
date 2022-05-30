@@ -37,7 +37,7 @@
       
       $fecha = new DateTime();
 
-      $picture=$_FILES['picture'].$fecha->getTimestamp()['name'];
+      $picture=$_FILES['picture']['name'].$fecha->getTimestamp();
       $path=$_FILES['picture']['tmp_name'];
 
       $destiny = "fotos/".$picture;
