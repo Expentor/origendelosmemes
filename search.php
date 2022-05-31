@@ -1,7 +1,7 @@
-<?php require "partials/header-navbar.php" ?>
-
 <?php
 
+require "partials/header.php";
+require "partials/header-navbarv2.php";
 require "database.php";
 
 $articles = $conn->query("SELECT * FROM articles");
@@ -9,33 +9,13 @@ $categories = $conn->query("SELECT * FROM Category");
 
 ?>
 
-<div class="blogem-banner">
-	<div class="container pt-5 mt-3">
-			<?php if (isset($_SESSION["admin"])): 
-					?>
-			<div class="container pt-5"class="b">
-				<a href="panelAdmins.php" class="btn btn-primary">Ir al panel de control</a>
-			</div>
-			<?php endif ?>
-			</div>
-	<div class="blogem-banner__info">}
-		<div class="blogem-banner__info-container">
-			<img src="img/ODM.png">
-			<h1>ORIGEN DE LOS MEMES</h1>
-			<h2>Un blog sobre <b>memes</b>...</h2>
-		</div>
-	</div>
-	<div class="flecha">
-		<a href="#articulos"><i class="fas fa-chevron-down"></i></a>
-	</div>
-</div>
-</header>
-<section id="articulos">
-<h2 class="articulos-texto">ARTÍCULOS RECIENTES</h2>
-<div class = "col-md-8">
+<br><br><br><br><br>
+<center><h2 class="articles-searched">ARTÍCULOS ENCONTRADOS</h2></center>
 
-<!-- SEARCH BAR -->
-	<nav class="navbar navbar-expand-lg">
+<section id="articulos">
+<div class="articulos-container">
+
+<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<form action="search.php" method="POST" class="d-flex" role="search">
@@ -44,10 +24,9 @@ $categories = $conn->query("SELECT * FROM Category");
 				</form>
 			</div>
 		</div>
-	</nav>
+</nav>
 
-<!-- FILTER DATE -->
-	<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div>
@@ -59,11 +38,9 @@ $categories = $conn->query("SELECT * FROM Category");
 				</div>	
 			</div>
 		</div>
-	</nav>
+</nav>
 
-
-<!-- FILTER CATEGORY -->
-	<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg">
 		<div class="container-fluid">
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<div>
@@ -85,25 +62,31 @@ $categories = $conn->query("SELECT * FROM Category");
 				</div>
 			</div>
 		</div>
-	</nav>
+</nav>
 
+<?php
 
-</div>
+//CODIGO DE SEARCH BAR
 
-<div class="articulos-container">
-
-<?php 
-		foreach ($articles as $articles) { ?>
-			<a href="articles.php?id=<?= $articles["id"]?>" style="background-image: url(<?= $articles["picture"] ?>);">
+if (isset($_POST['search'])) {
+    $keyword=$_POST['keyword'];
+    $query = $conn->prepare("SELECT * FROM articles WHERE title LIKE '$keyword' OR subtitle LIKE '$keyword' OR information LIKE '$keyword' OR origin LIKE '$keyword' OR author LIKE '$keyword' ORDER BY title");
+    $query->execute();
+    while ($row=$query->fetch()) {?>
+        <a href="articles.php?id=<?= $row["id"]?>" style="background-image: url(<?= $row["picture"] ?>);">
 				<div class="articulo-data">
-					<h2><?= $articles["title"] ?></h2>
-					<?= $articles["subtitle"] ?>
+					<h2><?= $row["title"] ?></h2>
+					<?= $row["subtitle"] ?>
 				</div>
-			</a>
-	<?php }
+		</a>
+        <?php
+    }
+    
+}
+
 ?>
 
 </div>
 </section>
-	
+
 <?php require "partials/footer.php" ?>
