@@ -27,7 +27,7 @@
         $picture= $_FILES['picture']['name'].$fecha->getTimestamp();
         $path=$_FILES['picture']['tmp_name'];
 
-        $destiny = "fotos/".$picture;
+        $destiny = "images/".$picture;
         move_uploaded_file($path, $destiny);
 
         $origin = $_POST["origin"];

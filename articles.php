@@ -25,6 +25,8 @@ $post_id = $_GET["id"];
 // $comments = $statement2->fetch(PDO::FETCH_ASSOC);
 
 $comments = $conn->query("SELECT * FROM comments WHERE post_id = $id LIMIT 10 OFFSET 0");
+
+$error = null;
 ?>
 
 <!DOCTYPE html>
@@ -167,37 +169,14 @@ $comments = $conn->query("SELECT * FROM comments WHERE post_id = $id LIMIT 10 OF
                                 <h5><?= $comments["datecom"] ?></h5>
                                 <?php if (isset($_SESSION["user"])) : ?>
                                     <?php if ($_SESSION["user"]["username"] == $comments["author"]) : ?>
-                                        <div>
-                                            <div class="container text-center">
-                                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Borrar Articulo</button>
-                                            </div>
-
-                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <h5>¿Está seguro que desea eliminar este artículo?</h5>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                            <a href="delete.php?id=<?= $articles["id"] ?>" class="btn btn-primary">Borrar Artículo</a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <a href="delete_comments.php?id=<?= $comments["id"] ?>&post_id=<?= $comments["post_id"] ?>" class="borrar">B</a>
                                     <?php endif ?>
                                 <?php endif ?>
 
                                 <?php if (isset($_SESSION["admin"])) : ?>
-                                    <?php if ($_SESSION["admin"]["username"] == $comments["author"]) : ?>
                                         <div>
                                             <button><i class="fa-solid fa-gear"></i></button>
                                         </div>
-                                    <?php endif ?>
                                 <?php endif ?>
                             </div>
                             <p><?= $comments["comments"] ?></p>

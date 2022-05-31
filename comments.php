@@ -7,11 +7,7 @@ $error = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["comments"])) {
     $error = "No se puede ingresar un comentario en blanco.";
-  } else if (!isset($_SESSION["admin"]) || !isset($_SESSION["admin"])) {
-    $error = "Primero debes de iniciar sesion para poder comentar";
   } else {
-    
-    // $author_admin = $_SESSION["admin"]["username"];
     $post_id = $_GET["id"];
     if (isset($_SESSION["user"])) {
       $author = $_SESSION["user"]["username"];
@@ -32,5 +28,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     header("Location: articles.php?id=$post_id");
   }
-  return $error;
 }
