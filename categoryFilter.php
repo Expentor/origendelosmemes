@@ -5,7 +5,6 @@ require "partials/header-navbarv2.php";
 require "database.php";
 
 $articles = $conn->query("SELECT * FROM articles");
-$categories = $conn->query("SELECT * FROM Category");
 
 ?>
 
@@ -48,14 +47,11 @@ $categories = $conn->query("SELECT * FROM Category");
 					<form action="categoryFilter.php" method="POST" class="form_category">
 								<select class="form-select" name="category">
 										<option selected="selected">Seleccione una categoria</option>
-										<?php
-										$title = "title";
-										$id_cat = "id_cat";
-										
-										foreach($categories as $item){
-											echo "<option value='$item[$id_cat]'>$item[$title]</option>";
-										}
-										?>
+										<option value='1'>Anime</option>";
+										<option value='2'>Videojuegos</option>";
+										<option value='3'>Gatos</option>";
+										<option value='4'>Animales</option>";
+										<option value='5'>Personas</option>";
 								</select>
 								<button class="btn btn-outline-warning" name="category_button" type="submit">Filtrar</button>
 					</form>	
