@@ -8,8 +8,6 @@ session_start();
   return;
 }*/
 
-  $categories = $conn->query("SELECT * FROM Category");
-
   $error = null;
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -122,14 +120,11 @@ session_start();
                 <div>
                     <select class="form-select" name="category">
                             <option selected="selected">Seleccione una categoria</option>
-                            <?php
-                            $title = "title";
-                            $id_cat = "id_cat";
-                            
-                            foreach($categories as $item){
-                                echo "<option value='$item[$id_cat]'>$item[$title]</option>";
-                            }
-                            ?>
+										        <option value='1'>Anime</option>";
+										        <option value='2'>Videojuegos</option>";
+										        <option value='3'>Gatos</option>";
+										        <option value='4'>Animales</option>";
+										        <option value='5'>Personas</option>";
                     </select>
                 </div>
 
