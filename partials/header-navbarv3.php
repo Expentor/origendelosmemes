@@ -5,7 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>BLOGEM - Un blog sobre memes... :trollface:</title>
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" href="styles.css">
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +27,7 @@
   ></script>
 </head>
 <body>
-	<header>
+	<header class="con-superior">
 		<nav>
 			<div class="icono-del-menu"> 
 				<i class="fas fa-bars"></i>
@@ -45,7 +45,7 @@
 					<?php if (isset($_SESSION["user"])): 
 				?>
           <div>
-            <h5><?= htmlspecialchars($_SESSION["user"]["username"]) ?></h5>
+            <h5><?= $_SESSION["user"]["username"] ?></h5>
           </div>
         <?php endif ?>
 		<?php if (isset($_SESSION["admin"])): 

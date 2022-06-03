@@ -34,48 +34,28 @@
   }
 ?>
 <?php require "partials/header.php" ?>
-      <div class="container pt-5">
-        <div class="row justify-content-center">
-          <div class="col-md-8">
-            <div class="card">
-              <div class="card-header">Iniciar Sesión</div>
-              <div class="card-body">
-                <?php if ($error): ?>
+    <div class="login-banner">
+      <div class="login-box">
+        <img class="avatar" src="img/ODM.png" alt="Logo de ODM">
+          <h2>Iniciar Sesion</h2>
+          <?php if ($error): ?>
                   <p class="text-danger">
                     <?= $error ?>
                   <?php endif ?>
-                <form method="POST" action="login.php">
-                  <div class="mb-3 row">
-                    <label for="email" class="col-md-4 col-form-label text-md-end">Email</label>
-
-                    <div class="col-md-6">
-                      <input id="email" type="email" class="form-control" name="email" autocomplete="email" autofocus>
-                    </div>
-                  </div>
-
-                  <div class="mb-3 row">
-                    <label for="password" class="col-md-4 col-form-label text-md-end">Contraseña</label>
-
-                    <div class="col-md-6">
-                      <input id="password" type="password" class="form-control" name="password" autocomplete="password" autofocus>
-                    </div>
-                  </div>
-
-                  <div class="mb-3 row">
-                    <div class="col-md-6 offset-md-4">
-                      <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
-                    </div>
-                  </div>
-                </form>
-                  <a href="register.php">¿No tienes cuenta?</a>
-                <div class="mt-2">
-                  <a href="change_password.php">Cambiar Contraseña</a>
-                </div>
-              </div>
-            </div>
+                <form method="POST" action="login.php">  
+          <form>
+                <input id="email" type="text"  name="email" autofocus placeholder="Ingresa tu Email">        
+                <input id="password" type="password" name="password" autofocus placeholder="Ingresa tu contraseña">
+                <input type="submit" value="Iniciar Sesion"> 
+            </form>
+           <div class="mt-5">
+           <center><p>¿No tienes cuenta?</p> <a href="register.php">REGISTRATE</a></center>
+           </div>
+           <div class="mt-5">
+                <center><p>¿Olvidaste tu contraseña</p> <a href="change_password.php">CAMBIAR CONTRASEÑA</a></center>
           </div>
         </div>
-      </div>
+      </div> 
     </main>
   </body>
 </html>

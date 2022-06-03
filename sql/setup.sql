@@ -1,7 +1,5 @@
 DROP DATABASE IF EXISTS userOrigenDeLosMemes;
 
-DROP TABLE IF EXISTS users;
-
 CREATE DATABASE userOrigenDeLosMemes;
 
 USE userOrigenDeLosMemes;
@@ -50,6 +48,8 @@ CREATE TABLE likes (
     dislikes INT
 );
 
+DROP TABLE IF EXISTS comments;
+
 CREATE TABLE comments (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     author VARCHAR(255) DEFAULT NULL,
@@ -58,9 +58,3 @@ CREATE TABLE comments (
     datecom datetime NOT NULL DEFAULT current_timestamp(),
     post_id INT NOT NULL
 );
-
-DROP TABLE IF EXISTS comments;
-
-INSERT INTO users (username, email, password) VALUES ("Adair", "adair@adair.com", "hola123");
-INSERT INTO admins (username, email, password, isAdmin) VALUES ("Adair", "adair@gmail.com", "vbnfgh213", True);
-INSERT INTO articles (publish_date, title, information, links) VALUES ("2022-04-27", "Jinx the cat", "jinx is a cat with big green eyes", "https://twitter.com/bigfootjinx");

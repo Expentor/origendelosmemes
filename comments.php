@@ -7,6 +7,9 @@ $error = null;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (empty($_POST["comments"])) {
     $error = "No se puede ingresar un comentario en blanco.";
+  } else if (!isset($_SESSION["admin"]) && !isset($_SESSION["user"])) {
+    $error = "Debes de iniciar sesion para poder comentar";
+    header("Location: articles.php?id=$post_id");
   } else {
     $post_id = $_GET["id"];
     if (isset($_SESSION["user"])) {

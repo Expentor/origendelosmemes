@@ -11,6 +11,8 @@
       $error = "El formato de email es incorrecto.";
     } else if ($_POST["password"] != $_POST["confirm_password"]) {
       $error = "Las contraseñas no son iguales.";
+    } else if (empty($_FILES['picture']["type"])) {
+      $error = "Es obligatorio que seleccione una foto de perfil.";
     } else {
       $select  = $conn->prepare("SELECT * FROM users WHERE username = :username");
       $select->bindParam(":username", $_POST["username"]);

@@ -24,7 +24,7 @@ $post_id = $_GET["id"];
 
 // $comments = $statement2->fetch(PDO::FETCH_ASSOC);
 
-$comments = $conn->query("SELECT * FROM comments WHERE post_id = $id LIMIT 10 OFFSET 0");
+$comments = $conn->query("SELECT * FROM comments WHERE post_id = $id");
 
 $error = null;
 ?>
@@ -41,7 +41,9 @@ $error = null;
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <!--<link rel="stylesheet" type="text/css" href="styles.css">-->
 </head>
 
@@ -50,15 +52,15 @@ $error = null;
         <img class="logo" src="bandera.jpg" alt="">
     </header> -->
     <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label>
         <!--<div class="logo">Weblog</div>-->
         <ul>
-            <li class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
-                    <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z" />
-                </svg><a href="index.php">Página principal</a></li>
-            <li class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                </svg><a href="aboutUs.html">About Us</a></li>
-            <li class="nav-item"><a href="#">Política de privacidad</a></li>
+            <li class="fas fa-home"></li><a href="index.php">  Página principal</a>
+            <li class="fas fa-user"></li><a href="aboutUs.html">  About Us</a>
+            <li class="fas fa-user-secret"></li><a href="#">  Política de privacidad</a>
             <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])) : ?>
                 <!-- Subject to change -->
                 <li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
@@ -79,8 +81,6 @@ $error = null;
                 </div>
             <?php endif ?>
         </ul>
-    </nav>
-    </ul>
     </nav>
     <div class="container">
         <div class="section">
@@ -153,10 +153,18 @@ $error = null;
                         <?= $error ?>
                     <?php endif ?>
                 <h1 class="blog-title">Comentarios:</h1>
-                <form method="POST" action="comments.php?id=<?= $id ?>" class="form_comentarios">
-                    <textarea name="comments" id="comments" placeholder="Comentario"></textarea>
-                    <button class="btn btn1" type="submit">Comentar</button>
-                </form>
+
+                <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])) : ?>
+                    <form method="POST" action="comments.php?id=<?= $id ?>" class="form_comentarios">
+                        <textarea name="comments" id="comments" placeholder="Comentario"></textarea>
+                        <button class="btn btn1" type="submit">Comentar</button>
+                    </form>
+                <?php endif ?>
+
+                <?php if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) : ?>
+                    <h5>Tiene que iniciar sesión para poder comentar en nuestra página.</h5>
+                        <a href="login.php"><button class="btn btn1">Iniciar sesión</button></a>
+                <?php endif ?>
 
                 <?php foreach ($comments as $comments) { ?>
                     <div class="comments">
@@ -165,21 +173,21 @@ $error = null;
                         </div>
                         <div class="info-comments">
                             <div class="header">
-                                <h4><?= $comments["author"] ?></h4>
+                                <h4><?= htmlspecialchars($comments["author"]) ?></h4>
                                 <h5><?= $comments["datecom"] ?></h5>
                                 <?php if (isset($_SESSION["user"])) : ?>
                                     <?php if ($_SESSION["user"]["username"] == $comments["author"]) : ?>
-                                        <a href="delete_comments.php?id=<?= $comments["id"] ?>&post_id=<?= $comments["post_id"] ?>" class="borrar">B</a>
+                                        <a href="delete_comments.php?id=<?= $comments["id"] ?>&post_id=<?= $comments["post_id"] ?>" class="borrar"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                     <?php endif ?>
                                 <?php endif ?>
 
                                 <?php if (isset($_SESSION["admin"])) : ?>
                                         <div>
-                                            <button><i class="fa-solid fa-gear"></i></button>
+                                           <a href="delete_comments.php?id=<?= $comments["id"] ?>&post_id=<?= $comments["post_id"] ?>" class="borrar"> <center><i class="fa fa-trash" aria-hidden="true"></i></center></a>
                                         </div>
                                 <?php endif ?>
                             </div>
-                            <p><?= $comments["comments"] ?></p>
+                            <p><?= htmlspecialchars($comments["comments"]) ?></p>
                         </div>
                     </div>
                 <?php } ?>

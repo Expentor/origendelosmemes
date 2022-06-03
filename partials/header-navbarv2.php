@@ -36,16 +36,10 @@
 				<li><i class="fas fa-home"></i><a href="index.php">  Página principal</a></li>
 				<li><i class="fas fa-user"></i><a href="aboutUs.html">  About Us</a></li>
 				<li><i class="fas fa-user-secret"></i><a href="#">  Política de privacidad</a></li>
-				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Subject to change -->
-					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
-					<?php else: ?>
-						<li class="different-li"><a href="login.php" class="button-link">Iniciar sesión</a></li>
-						<li class="different-li"><a href="register.php" class="button-link">Registrarse</a></li>
-					<?php endif ?>
 					<?php if (isset($_SESSION["user"])): 
 				?>
           <div>
-            <h5><?= htmlspecialchars($_SESSION["user"]["username"]) ?></h5>
+            <h5><?= $_SESSION["user"]["username"] ?></h5>
           </div>
         <?php endif ?>
 		<?php if (isset($_SESSION["admin"])): 
@@ -55,4 +49,4 @@
           </div>
         <?php endif ?>
 			</ul>
-		</nav>
+		</nav> 

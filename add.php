@@ -117,14 +117,6 @@
             </div>
 
             <div class="mb-3 row">
-              <label for="category" class="col-md-4 col-form-label text-md-end">Categoría</label>
-
-              <div class="col-md-6">
-                <input id="category" type="text" class="form-control" name="category" autocomplete="category" autofocus>
-              </div>
-            </div>
-
-            <div class="mb-3 row">
               <label for="publish_date" class="col-md-4 col-form-label text-md-end">Fecha de publicación</label>
 
               <div class="col-md-6">
@@ -137,6 +129,24 @@
 
               <div class="col-md-6">
                 <textarea id="information" type="text" class="form-control" name="information" autocomplete="information" autofocus></textarea>
+              </div>
+            </div>
+            
+            <!-- NUEVO ADD DE CATEGORY -->
+            <div class="mb-3 row">
+              <label for="category" class="col-md-4 col-form-label text-md-end">Categoria</label>
+              <div class="col-md-6">
+                <div>
+                    <select class="form-select" name="category">
+                            <option selected="selected">Seleccione una categoria</option>
+										        <option value='Anime'>Anime</option>";
+										        <option value='Videojuegos'>Videojuegos</option>";
+										        <option value='Gatos'>Gatos</option>";
+										        <option value='Animales'>Animales</option>";
+										        <option value='Personas'>Personas</option>";
+                    </select>
+                </div>
+
               </div>
             </div>
 

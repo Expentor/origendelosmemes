@@ -16,6 +16,7 @@ $articles = $conn->query("SELECT * FROM articles");
 <?php require "partials/header.php" ?>
 <a href="index.php" class="btn btn-primary mb-2 mt-5 mx-5">Regresar al index</a>
 <a href="add.php" class="btn btn-success mb-2 mt-5 mx-5">Añadir artículo</a>
+<a href="users.php" class="btn btn-success mb-2 mt-5 mx-5">Gestionar usuarios</a>
 <div class="container pt-4 p-3">
   <h2 class="mb-5">
     <center>Panel de control para admins</center>

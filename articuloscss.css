@@ -4,8 +4,8 @@ body{
     padding: 0;
     font-size: 16px;
     line-height: 1.4em;
-    background-image: url(img/Fondo.jpeg); 
-    background-size: cover;
+    background: url(Fondo.jpeg); 
+    background-size: contain;
     background-position: center;
     font-family: sans-serif;
 }
@@ -78,7 +78,7 @@ nav{
     text-transform: uppercase;
     color:#fff;
 }*/
-
+/*
 nav ul{
     list-style: none;
     float: right;
@@ -108,12 +108,13 @@ nav ul{
     font-weight: bold;
     
 }
-
+*/
 .button-link {
 	background: #fff;
 	color: #000;
 	font-size: 16px;
 	padding: 6px 12px;
+    margin-left: 60px;
 }
 
 .blog-post::after{
@@ -150,7 +151,7 @@ nav ul{
     width: 100%;
     height: 100%;
 }
-
+/*
 *:after{
     padding: 0;
     margin: 0;
@@ -177,7 +178,7 @@ nav ul{
 .different-li a:hover{
     color: rgb(180, 166, 166);
 }
-
+*/
 /*.logo{
     width: 100px;
     display: block;
@@ -296,6 +297,8 @@ p{
 hr{
     border-color: #e0e2e2f8;
     border-width: 2.5px;
+    margin-top: 3%;
+    margin-bottom: 3%;
 }
 /*FOOTER*/
 
@@ -437,11 +440,12 @@ hr{
     padding: 20px;
 }
 
-textarea#comments{
+textarea#texto{
     min-width: 900px;
     max-width: 900px;
     min-height: 100px;
     max-height: 100px;
+    border-color: rgb(225, 1, 1);
 }
 
 .btn{
