@@ -27,8 +27,19 @@
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST["username"])) {
       $error = "Porfavor rellene todos los espacios.";
+    } else if ($_FILES["picture"]["error"] == 4) {
+
+      $statement = $conn->prepare("UPDATE users SET username = :username WHERE id = :id");
+      $statement->execute([
+        ":id" => $id,
+        ":username" => $_POST["username"],
+      ]);
+
+      $_SESSION["flash"] = ["message" => "Usuario {$_POST['username']} actualizado."];
+
+      header("Location: users.php");
+      return;
     } else {
-      $username = $_POST["username"];
       $picture=$_POST['picture'];
       
       $fecha = new DateTime();

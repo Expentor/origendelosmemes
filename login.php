@@ -33,11 +33,11 @@
     }
   }
 ?>
-<?php require "partials/header.php" ?>
+<?php require "partials/header-navbar.php" ?>
     <div class="login-banner">
       <div class="login-box">
         <img class="avatar" src="img/ODM.png" alt="Logo de ODM">
-          <h2>Iniciar Sesion</h2>
+          <h2>Iniciar Sesión</h2>
           <?php if ($error): ?>
                   <p class="text-danger">
                     <?= $error ?>
@@ -49,10 +49,10 @@
                 <input type="submit" value="Iniciar Sesion"> 
             </form>
            <div class="mt-5">
-           <center><p>¿No tienes cuenta?</p> <a href="register.php">REGISTRATE</a></center>
+           <center><p>¿No tienes cuenta?</p> <a href="register.php">REGÍSTRATE</a></center>
            </div>
            <div class="mt-5">
-                <center><p>¿Olvidaste tu contraseña</p> <a href="change_password.php">CAMBIAR CONTRASEÑA</a></center>
+                <center><p>¿Olvidaste tu contraseña?</p> <a href="change_password.php">CAMBIAR CONTRASEÑA</a></center>
           </div>
         </div>
       </div> 

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 }
 ?>
-<?php require "partials/header.php" ?>
+<?php require "partials/header-navbar.php" ?>
 <div class="login-banner">
       <div class="login-box">
         <img class="avatar" src="img/ODM.png" alt="Logo de ODM">

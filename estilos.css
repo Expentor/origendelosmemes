@@ -20,7 +20,7 @@ nav{
 }
 nav ul{
     margin-left: 10%;
-    margin-right: 10%;
+    margin-right: 0%;
 
 }
 nav ul li{
@@ -35,6 +35,18 @@ nav ul li a{
     border-radius: 3px;
     text-transform: uppercase;
 }
+
+.nameaccount{
+    color: #fff;
+    font-size: 18px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    text-align: right;
+    margin-top: -60px;
+    margin-right: -5%;
+}
+
 li a.active, li a:hover{
     background: #daf23b58;
     transition: .5s;
@@ -52,7 +64,7 @@ li a.active, li a:hover{
     display: none;
 }
 section{
-    background: url(fondo.jpg) no-repeat;
+    background: url(img/Fondo.jpg) no-repeat;
     background-size: cover;
     background-position: center center;
     height: calc(100vh - 80px);
@@ -69,6 +81,16 @@ section{
         font-size: 13px;
         margin-left: 30px;
     }
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: right;
+        margin-top: -60px;
+        margin-right: -5%;
+    }
 }
 
 @media (max-width: 1204px){
@@ -81,6 +103,16 @@ section{
     .button-link {
         font-size: 11px;
         margin-left: 15px;
+    }
+    .nameaccount{
+        color: #fff;
+        font-size: 13px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: right;
+        margin-top: -60px;
+        margin-right: -5%;
     }
 }
 
@@ -116,6 +148,15 @@ section{
     nav ul li a{
         font-size: 20px;
     }
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
+    }
     li a:hover, li a.active{
         background: none;
         color: rgb(212, 250, 24);
@@ -134,6 +175,9 @@ section{
     .checkbtn{
         display: block;
         margin-right: -80px;
+    }
+    img{
+        max-width: 30%;
     }
     nav{
         position: fixed;
@@ -161,6 +205,15 @@ section{
     }
     nav ul li a{
         font-size: 20px;
+    }
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
     }
     li a:hover, li a.active{
         background: none;
@@ -230,6 +283,15 @@ section{
     }
     nav ul li a{
         font-size: 20px;
+    }
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
     }
     li a:hover, li a.active{
         background: none;
@@ -347,6 +409,15 @@ section{
     }
     nav ul li a{
         font-size: 20px;
+    }
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
     }
     li a:hover, li a.active{
         background: none;
@@ -469,6 +540,16 @@ section{
         background: none;
         color: rgb(212, 250, 24);
     }
+
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
+    }
     #check:checked ~ ul{
         left:0;
     }
@@ -581,6 +662,229 @@ section{
     }
     nav ul li a{
         font-size: 20px;
+    }
+
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
+    }
+    li a:hover, li a.active{
+        background: none;
+        color: rgb(212, 250, 24);
+    }
+    #check:checked ~ ul{
+        left:0;
+    }
+
+    img{
+        max-width: 80%;
+        margin-bottom: 0px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .blog-post{
+        padding: 60px 50px;
+        font-size: 5px;
+        width: 30%;
+    }
+    .blog-title-principal{
+        font-size: 15px;
+        font-family: 'Arial';
+        text-align: center;
+        margin-right: 2px;
+        margin-bottom: 1.1em;
+        
+    }
+    .tabla-post-left {
+        font-size: 1px;
+    }
+    .tabla-post-left .blog-subtitulo {
+        font-size: 13px;
+    }
+    .tabla-post-right{
+        margin-left: 4em;
+        margin-top: 10px;
+    }
+    .tabla-post-right .blog-subtitulo {
+        font-size: 13px;
+    }
+    .side-content{
+        font-size: 11px;
+        margin-top: 1px;
+    }
+    .side-post{
+        padding: 50px 50px;
+        width: 30%;
+        margin-left: 0.1%;
+    }
+    .side-comment{
+        margin-left: 0.1%;
+        padding: 50px 15px;
+        width: 30%;
+    }
+
+    textarea#texto{
+        min-width: 264px;
+        max-width: 264px;
+        min-height: 100px;
+        max-height: 100px;
+        border-color: rgb(225, 1, 1);
+    }
+
+    .posts-wrapper {
+        width: 80.7%;
+        font-size: 80%;
+        margin-bottom: 8px;
+        /*border: 1px solid rgb(255, 255, 255);*/
+    }
+
+    
+    .comments{
+        display: flex;
+        word-break: break-all;
+    }
+
+
+    .photo-perfil{
+        width: 200px;
+        height: 60px;
+        margin-right: -20px;
+        margin-top: 10px;
+    }
+
+    .photo-perfil img{
+        width: 100%;
+        height: 100%;
+        border-radius: 100%;
+    }
+
+
+    .info-comments{
+        border-radius: 50px;
+        max-width: 80%;
+        min-width: 80%;
+        margin-left: 20px;
+        background: #e6e6e6;
+        transition: all 300ms;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        border-bottom: 6px solid #9B2226;
+    }
+
+
+    .info-comments .header{
+        border-radius: 6.5px;
+        display: flex;
+        justify-content: space-between;
+        padding: 30px 1px;
+        max-height: 60px;
+        background: #CA6702;
+        color: white;
+
+    }
+
+    .info-comments .header h4,h5{
+        line-height: 5px;
+        font-size: 11px;
+    }
+
+
+    .info-comments p{
+        padding: 20px;
+    }
+    .blog-title{
+        font-size: 13px;
+    }
+
+    #footer .redes-sociales{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 10px;
+    }
+    #footer input {
+        padding: 12px;
+        font-size: 14px;
+        display: inline-block;
+        width: 75%;
+        border-left: 4px solid #fff;
+    }
+    
+    #footer .sub-to-newsletter {
+        width: auto;
+        margin-left: 10px;
+    }
+
+    .btn{
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+        height: 40px;
+        background: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        font-family: 'Arial';
+        font-size: 9px;
+        font-weight: bold;
+        border-color: #000;
+        cursor: pointer;
+        text-transform: uppercase;
+        transition: .3s ease all;
+        border-radius: 5px;
+        margin-left: 72%;
+        margin-bottom: 35px;
+    }
+    .btn:hover{
+        background: #EE9B00;
+    }
+}
+
+@media (max-width: 375px){
+    .checkbtn{
+        display: block;
+        margin-right: -80px;
+    }
+    nav{
+        position: fixed;
+        z-index: 10;
+    }
+    nav ul{
+        margin-left: 0px;
+    }
+    ul{
+        position: fixed;
+        width: 100%;
+        height: 70%;
+        background: rgba(0,0,0,0.8);
+        top: 80px;
+        left: -130%;
+        /*text-align: left;*/
+        transition: all .4s;
+        z-index: 10;
+        
+    }
+    nav ul li{
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a{
+        font-size: 20px;
+    }
+
+    .nameaccount{
+        color: #fff;
+        font-size: 18px;
+        padding: 7px 13px;
+        border-radius: 3px;
+        text-transform: uppercase;
+        text-align: left;
+        margin-top: 10px;
     }
     li a:hover, li a.active{
         background: none;

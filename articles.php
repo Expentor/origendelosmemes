@@ -58,9 +58,9 @@ $error = null;
         </label>
         <!--<div class="logo">Weblog</div>-->
         <ul>
-            <li class="fas fa-home"></li><a href="index.php">  Página principal</a>
-            <li class="fas fa-user"></li><a href="aboutUs.html">  About Us</a>
-            <li class="fas fa-user-secret"></li><a href="#">  Política de privacidad</a>
+            <li><a class="fas fa-home"></i><a href="index.php">Página principal</a>
+            <li><a class="fas fa-user"></i><a href="aboutUs.html">About Us</a>
+            <li><a class="fas fa-user-secret"></i><a href="privacyPolicy.php">Política de privacidad</a>
             <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])) : ?>
                 <!-- Subject to change -->
                 <li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
@@ -70,13 +70,13 @@ $error = null;
             <?php endif ?>
             <?php if (isset($_SESSION["user"])) :
             ?>
-                <div>
+                <div class="nameaccount">
                     <h5><?= $_SESSION["user"]["username"] ?></h5>
                 </div>
             <?php endif ?>
             <?php if (isset($_SESSION["admin"])) :
             ?>
-                <div>
+                <div class="nameaccount">
                     <h5><?= $_SESSION["admin"]["email"] ?></h5>
                 </div>
             <?php endif ?>
@@ -109,7 +109,7 @@ $error = null;
         </div>
         <div class="section">
             <div class="side-post">
-                <h1 class="blog-title">Informacion:</h1>
+                <h1 class="blog-title">Información:</h1>
                 <p class="side-content"><?= $article["information"] ?></p>
                 <hr>
                 <h1 class="blog-title">Referencias</h1>
@@ -118,12 +118,6 @@ $error = null;
         </div>
         <div class="section">
             <div class="side-comment">
-                <div class="posts-wrapper">
-                    <i class="fa fa-thumbs-up like-btn" class="fa fa-thumbs-o-up like-btn" data-id=""></i>
-                    <span class="likes"></span>
-                    <i class="fa fa-thumbs-down dislike-btn" class="fa fa-thumbs-o-down dislike-btn" data-id=""></i>
-                    <span class="dislikes"></span>
-                </div>
                 <!-- <button type="button" class="boton-reacciones">
                     <span class="texto-boton">Reaccionar</span>
                         <div class="reacciones">
@@ -156,13 +150,13 @@ $error = null;
 
                 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])) : ?>
                     <form method="POST" action="comments.php?id=<?= $id ?>" class="form_comentarios">
-                        <textarea name="comments" id="comments" placeholder="Comentario"></textarea>
+                        <textarea name="comments" id="texto" placeholder="Comentario"></textarea>
                         <button class="btn btn1" type="submit">Comentar</button>
                     </form>
                 <?php endif ?>
 
                 <?php if (!isset($_SESSION["user"]) && !isset($_SESSION["admin"])) : ?>
-                    <h5>Tiene que iniciar sesión para poder comentar en nuestra página.</h5>
+                    <h5 style="margin-top: 10px;">Tiene que iniciar sesión para poder comentar en nuestra página.</h5>
                         <a href="login.php"><button class="btn btn1">Iniciar sesión</button></a>
                 <?php endif ?>
 

@@ -4,7 +4,7 @@ body{
     padding: 0;
     font-size: 16px;
     line-height: 1.4em;
-    background: url(Fondo.jpeg); 
+    background: url(img/Fondo.jpeg); 
     background-size: contain;
     background-position: center;
     font-family: sans-serif;
@@ -408,7 +408,7 @@ hr{
 
 
 .info-comments{
-    border-radius: 50px;
+    border-radius: 20px;
     max-width: 80%;
     min-width: 80%;
     margin-left: 20px;
@@ -425,14 +425,18 @@ hr{
     display: flex;
     justify-content: space-between;
     padding: 10px;
-    max-height: 40px;
+    max-height: 55px;
     background: #CA6702;
     color: white;
 
 }
 
 .info-comments .header h4,h5{
-    line-height: 3px;
+    line-height: -10px;
+}
+
+.info-comments .header a{
+    float: right;
 }
 
 
@@ -446,6 +450,7 @@ textarea#texto{
     min-height: 100px;
     max-height: 100px;
     border-color: rgb(225, 1, 1);
+    margin-top: 20px;
 }
 
 .btn{

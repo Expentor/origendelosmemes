@@ -1,7 +1,5 @@
 <?php
-
-require "partials/header.php";
-require "partials/header-navbarv2.php";
+require "partials/header-navbar.php";
 require "database.php";
 
 $articles = $conn->query("SELECT * FROM articles");
@@ -17,54 +15,62 @@ $categories = $conn->query("SELECT * FROM Category");
 <section id="articulos">
     <div class="articulos-container">
 
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <form action="search.php" method="POST" class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" name="keyword" placeholder="Buscar articulo" aria-label="Buscar articulo">
-                        <button class="btn btn-outline-success" name="search" type="submit">Buscar</button>
-                    </form>
-                </div>
-            </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div>
-                        <h5><b>Buscar por fecha</b></h5>
-                        <form action="filterDate.php" method="POST" class="form_searh_date" role="date">
-                            <input type="date" name="fecha_de" id="fecha_de" value="<?php echo $fecha_de; ?>" required>
-                            <button class="btn btn-outline-danger" name="date"><i class="bi bi-calendar-date"></i>Buscar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg">
-            <div class="container-fluid">
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div>
-                        <h5><b>Categorias</b></h5>
-                        <form action="categoryFilter.php" method="POST" class="form_category">
-                            <select class="form-select" name="category">
-                                <option selected="selected">Seleccione una categoria</option>
-                                <?php
-                                $title = "title";
-                                $id_cat = "id_cat";
-
-                                foreach ($categories as $item) {
-                                    echo "<option value='$item[$id_cat]'>$item[$title]</option>";
-                                }
-                                ?>
-                            </select>
-                            <button class="btn btn-outline-warning" name="category_button" type="submit">Filtrar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </nav>
+    <div class="col">
+		<div class="row">
+			<div class="col-md-5">
+				<!-- SEARCH BAR -->
+				<nav class="navbar navbar-expand">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<form action="search.php" method="POST" class="d-flex" role="search">
+								<input class="form-control me-2" type="search" name="keyword" placeholder="Buscar articulo" aria-label="Buscar articulo">
+								<button class="btn btn-outline-success" name="search" type="submit">Buscar</button>
+							</form>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="col-md-5">
+				<!-- FILTER DATE -->
+				<nav class="navbar navbar-expand">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<div>
+								<h5><b>Buscar por fecha</b></h5>
+								<form action="filterDate.php" method="POST" class="form_searh_date" role="date">
+									<input type="date" name="fecha_de" id="fecha_de" value="<?php echo $fecha_de; ?>" required>
+									<button class="btn btn-outline-danger" name="date"><i class="bi bi-calendar-date"></i>Buscar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<div class="col">
+				<!-- FILTER CATEGORY -->
+				<nav class="navbar navbar-expand">
+					<div class="container-fluid">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
+							<div>
+								<h5><b>Categorias</b></h5>
+								<form action="categoryFilter.php" method="POST" class="form_category">
+									<select class="form-select" name="category">
+										<option selected="selected">Seleccione una categoria</option>
+										<option value='Anime'>Anime</option>";
+										<option value='Videojuegos'>Videojuegos</option>";
+										<option value='Gatos'>Gatos</option>";
+										<option value='Animales'>Animales</option>";
+										<option value='Personas'>Personas</option>";
+									</select>
+									<button class="btn btn-outline-warning" name="category_button" type="submit">Filtrar</button>
+								</form>
+							</div>
+						</div>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
 
         <?php
 

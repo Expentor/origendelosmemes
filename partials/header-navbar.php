@@ -35,7 +35,7 @@
 			<ul id="menu">
 				<li><i class="fas fa-home"></i><a href="index.php">  Página principal</a></li>
 				<li><i class="fas fa-user"></i><a href="aboutUs.html">  About Us</a></li>
-				<li><i class="fas fa-user-secret"></i><a href="#">  Política de privacidad</a></li>
+				<li><i class="fas fa-user-secret"></i><a href="privacyPolicy.php">  Política de privacidad</a></li>
 				 <?php if (isset($_SESSION["user"]) || isset($_SESSION["admin"])): ?>  <!-- Subject to change -->
 					<li class="different-li"><a href="logout.php" class="button-link">Salir de la sesión</a></li>
 					<?php else: ?>

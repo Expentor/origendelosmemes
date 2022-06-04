@@ -1,7 +1,5 @@
 <?php
-
-require "partials/header.php";
-require "partials/header-navbarv2.php";
+require "partials/header-navbar.php";
 require "database.php";
 
 $articles = $conn->query("SELECT * FROM articles");
@@ -19,7 +17,7 @@ $categories = $conn->query("SELECT * FROM Category");
 		<div class="row">
 			<div class="col-md-5">
 				<!-- SEARCH BAR -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<form action="search.php" method="POST" class="d-flex" role="search">
@@ -32,7 +30,7 @@ $categories = $conn->query("SELECT * FROM Category");
 			</div>
 			<div class="col-md-5">
 				<!-- FILTER DATE -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<div>
@@ -48,7 +46,7 @@ $categories = $conn->query("SELECT * FROM Category");
 			</div>
 			<div class="col">
 				<!-- FILTER CATEGORY -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<div>

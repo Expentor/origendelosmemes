@@ -30,11 +30,12 @@ $articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
 </header>
 <section id="articulos">
 	<h2 class="articulos-texto">ARTÍCULOS RECIENTES</h2>
+	<center>
 	<div class="col">
 		<div class="row">
 			<div class="col-md-5">
 				<!-- SEARCH BAR -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<form action="search.php" method="POST" class="d-flex" role="search">
@@ -47,7 +48,7 @@ $articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
 			</div>
 			<div class="col-md-5">
 				<!-- FILTER DATE -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<div>
@@ -63,7 +64,7 @@ $articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
 			</div>
 			<div class="col">
 				<!-- FILTER CATEGORY -->
-				<nav class="navbar navbar-expand-lg">
+				<nav class="navbar navbar-expand">
 					<div class="container-fluid">
 						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<div>
@@ -86,6 +87,7 @@ $articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
 			</div>
 		</div>
 	</div>
+	</center>
 	<?php if ($articles->rowCount() == 0) : ?>
       <div class="col-md-4 mx-auto">
         <div class="card card-body text-center">

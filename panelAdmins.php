@@ -42,7 +42,6 @@ $articles = $conn->query("SELECT * FROM articles");
               <p class="m-2"><?= $articles["author"] ?></p>
               <p class="m-2"><?= $articles["publish_date"] ?></p>
             </div>
-            <p class="m-2"><?= substr($articles["information"], 0, 50) ?></p>
             <a href="edit.php?id=<?= $articles["id"] ?>" class="btn btn-success mb-2">Editar Artículo</a>
             <a href="articles.php?id=<?= $articles["id"] ?>" class="btn btn-info mb-2 mx-1"><i class="fas fa-eye"></i></a>
             <div class="container text-center">
