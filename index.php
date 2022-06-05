@@ -4,7 +4,7 @@
 
 require "database.php";
 
-$articles = $conn->query("SELECT * FROM articles LIMIT 10 OFFSET 0");
+$articles = $conn->query("SELECT * FROM articles ORDER BY id DESC");
 
 ?>
 

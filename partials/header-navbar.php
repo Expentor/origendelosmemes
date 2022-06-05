@@ -51,7 +51,7 @@
 		<?php if (isset($_SESSION["admin"])): 
 				?>
           <div>
-            <h5><?= $_SESSION["admin"]["email"] ?></h5>
+            <h5><?= htmlspecialchars($_SESSION["admin"]["username"]) ?></h5>
           </div>
         <?php endif ?>
 			</ul>

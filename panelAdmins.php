@@ -9,7 +9,7 @@ if (!isset($_SESSION["admin"])) {
   return;
 }
 
-$articles = $conn->query("SELECT * FROM articles");
+$articles = $conn->query("SELECT * FROM articles ORDER BY id DESC");
 
 ?>
 

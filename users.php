@@ -9,7 +9,7 @@ if (!isset($_SESSION["admin"])) {
   return;
 }
 
-$users = $conn->query("SELECT * FROM users");
+$users = $conn->query("SELECT * FROM users ORDER BY id DESC");
 
 ?>
 
