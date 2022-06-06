@@ -54,7 +54,7 @@ CREATE TABLE comments (
     id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     author VARCHAR(255) DEFAULT NULL,
     profile_picture VARCHAR(255),
-    comments VARCHAR(255) DEFAULT NULL,
+    comments TEXT DEFAULT NULL,
     datecom datetime NOT NULL DEFAULT current_timestamp(),
     post_id INT NOT NULL
 );
